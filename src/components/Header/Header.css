@@ -1,0 +1,74 @@
+.HeaderMainBox {
+  min-width: 1920px;
+  height: 96px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 20px 32px;
+}
+
+.HeaderLogo {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  width: 167px;
+  background-image: url(/src/components/Header/Logo.svg);
+}
+.HeaderSearch {
+  height: 96px;
+  width: 1457px;
+  border-right: 1px solid #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+.fa-magnifying-glass {
+  font-size: 20px;
+}
+.fa-user {
+  font-size: 20px;
+}
+
+.HeaderInputSearch {
+  width: 1200px;
+  height: 92px;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+.HeaderUser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 92px;
+  width: 230px;
+}
+.HeaderUserIcon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(133.87deg, #4d0ac7 -10.18%, #912ef2 108.59%);
+  border-radius: 4px;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.HeaderUserName {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 34px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #313037;
+  cursor: pointer;
+}

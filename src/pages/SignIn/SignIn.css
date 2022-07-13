@@ -1,0 +1,93 @@
+.MainContainer {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  width: 100vh;
+  height: 100vh;
+  background: #e5e5e5;
+}
+
+.SignInBack {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #313037;
+  cursor: pointer;
+  margin-bottom: 32px;
+  text-align: start;
+}
+
+.SignInTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+  color: #313037;
+}
+.SignInBox {
+  margin: 72px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 40px;
+  gap: 10px;
+  width: 624px;
+  height: 472px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+.SignInEmailInput,
+.SignInPasswordInput {
+  width: 544px;
+  height: 56px;
+  background: #ffffff;
+  border: 1px solid rgba(49, 48, 55, 0.1);
+  border-radius: 4px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(49, 48, 55, 0.5);
+  text-align: start;
+}
+
+.SignInEmail,
+.SignInPassword {
+  width: 544px;
+  height: 84px;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.SignInButton {
+  width: 544px;
+  height: 56px;
+}
+
+.SignInSignUp {
+  margin: 24px auto;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #8d8e97;
+  width: 243px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.SignInSignUpLink {
+  color: #6c1bdb;
+  cursor: pointer;
+}

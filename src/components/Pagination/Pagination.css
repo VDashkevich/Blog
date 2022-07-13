@@ -1,0 +1,57 @@
+.PagMainBox {
+  width: 1120px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.PagNavBox {
+  width: 60px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.PagText {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(49, 48, 55, 0.3);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.PagIcon {
+  width: 20px;
+  height: 20px;
+  color: rgba(49, 48, 55, 0.3);
+  font-size: 30px;
+}
+.PagNumBox {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(49, 48, 55, 0.3);
+  cursor: pointer;
+}
+
+.PagNumber {
+  transition: 0.5s;
+}
+.PagNumber:hover {
+  color: #6c1bdb;
+}
+
+.PagText:hover {
+  color: #6c1bdb;
+}

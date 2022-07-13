@@ -1,0 +1,104 @@
+.postContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  width: 352px;
+  height: 388px;
+  background: #ffffff;
+  border-radius: 16px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.postImgBorder {
+  width: 352px;
+  height: 208px;
+  left: 0px;
+  top: 0px;
+  mix-blend-mode: normal;
+  position: relative;
+  transition: 0.5s;
+}
+
+.postImg {
+  width: 352px;
+  height: 208px;
+  left: 0px;
+  top: 0px;
+  border-radius: 16px 16px 0 0;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.postImgBox {
+  width: 352px;
+  height: 208px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  background: linear-gradient(
+    133.87deg,
+    rgba(77, 10, 199, 0.6) -10.18%,
+    rgba(145, 46, 242, 0.6) 108.59%
+  );
+  mix-blend-mode: normal;
+  border-radius: 16px 16px 0 0;
+  transition: 0.5s;
+}
+
+.footerCard {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  
+}
+.postsDate {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(49, 48, 55, 0.5);
+}
+.postsText {
+  width: 287px;
+  height: 84px;
+  text-align: start;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #313037;
+  overflow: hidden;
+  line-clamp: 3;
+  text-overflow: ellipsis;
+}
+
+.postImg:hover {
+  width: 352px;
+  height: 208px;
+  left: 0px;
+  top: 0px;
+  border-radius: 16px 16px 0 0;
+}
+
+.postImgBox:hover {
+  width: 352px;
+  height: 208px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  background: none;
+  mix-blend-mode: normal;
+  border-radius: 16px 16px 0 0;
+  transition: 0.5s;
+}
