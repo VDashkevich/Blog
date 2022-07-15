@@ -1,4 +1,6 @@
+import classnames from "classnames";
 import React, { FC } from "react";
+import { Theme, UseThemeContext } from "../../context/ThemeModeContext";
 import "./Button.css";
 
 type ButtonProps = {
@@ -14,8 +16,11 @@ const Button: FC<ButtonProps> = ({
   btnContent,
   disabled,
 }) => {
+  const { theme } = UseThemeContext();
+  const isLightTheme = theme === Theme.Light;
   return (
-    <button disabled={disabled} className={className} onClick={onClick}>
+    <button disabled={disabled} onClick={onClick}
+    className={className}>
       {btnContent}
     </button>
   );

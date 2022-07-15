@@ -1,20 +1,42 @@
-import React from "react";
-import "./App.css";
-import Input from "./components/Input";
-import Button from "./components/Button";
+import React, { useState } from "react";
+import Header from "./components/Header";
+import ContentPage from "./pages/ContentPage";
+import Footer from "./components/Footer";
+import MainPage from "./pages/MainPage";
+import SearchPage from "./pages/SearchPage";
+import Toggle from "./components/Toggle";
+import { ThemeModeProvider } from "./context/ThemeModeProvider";
+import { Theme, UseThemeContext } from "./context/ThemeModeContext";
+import Router from "./pages/Router";
+import { Provider } from "react-redux";
 import Card from "./components/Card";
+import classnames from "classnames";
 import Tab from "./components/Tab";
 import Pagination from "./components/Pagination";
-import Link from "./components/Link";
-import Header from "./components/Header";
+import Button from "./components/Button";
 import SignIn from "./pages/SignIn";
+import "./App.css";
 
 function App() {
+  const [theme, setTheme] = useState<Theme>(Theme.Light);
+
+  const onChangeTheme = (value: Theme) => {
+    setTheme(value);
+  };
+  const isLightTheme = theme === Theme.Light;
   return (
-    <div className="App">
-      <Header />   
-      <SignIn/>
-    </div>
+    <ThemeModeProvider theme={theme} onChangeTheme={onChangeTheme}>
+      <div
+        className={classnames({
+          ["AppLight"]: isLightTheme,
+          ["AppDark"]: !isLightTheme,
+        })}
+      >
+        <Header />
+        <MainPage />
+        <Footer />
+      </div>
+    </ThemeModeProvider>
   );
 }
 

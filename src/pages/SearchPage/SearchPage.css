@@ -1,0 +1,49 @@
+.SearchMainMainBoxLight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 72px;
+  width: 1120px;
+  transition: 0.5s;
+}
+.SearchMainMainBoxDark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 72px;
+  width: 1120px;
+  transition: 0.5s;
+}
+
+.SearchPageTitleLight {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+  color: #313037;
+}
+.SearchPageTitleDark {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+
+.SearchPagePosts {
+  width: 1120px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.SearchPagePagination {
+  margin-top: 72px;
+}
