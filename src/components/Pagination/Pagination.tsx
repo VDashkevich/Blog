@@ -33,7 +33,7 @@ const Pagination: FC<PaginationProps> = ({}: any) => {
   };
 
   const getPages = () => {
-    const postLength = posts && posts.length;
+    const postLength = 100;
 
     setTotalPages(Math.ceil(postLength / itemsPerPage));
   };
@@ -59,7 +59,7 @@ const Pagination: FC<PaginationProps> = ({}: any) => {
             ["PagTextDark"]: !isLightTheme,
           })}
           onClick={setPrevPage}
-          disabled={currentPage === totalPages}
+          disabled={currentPage === 1}
         >
           Prev
         </button>

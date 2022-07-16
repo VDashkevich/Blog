@@ -4,7 +4,7 @@ import { PaginationIncrementActions, PaginationDecrementActions, PaginationState
 const initialState: PaginationState = {
   pending: false, 
   currentPage: 1,
-  itemsPerPage: 9,
+  itemsPerPage: 12,
   error: null,
 };
 
@@ -20,7 +20,7 @@ export default (state = initialState, action: any) => {
         ...state,
         pending: false, 
         currentPage: action.payload.currentPage,
-        itemsPerPage: 9,
+        itemsPerPage: 12,
         error: null,
       };
     case paginationIncrementTypes.INCREMENT_PAGINATION_FAILURE:
