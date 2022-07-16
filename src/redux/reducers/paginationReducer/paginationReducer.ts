@@ -8,7 +8,7 @@ const initialState: PaginationState = {
   error: null,
 };
 
-export default (state = initialState, action: PaginationIncrementActions, PaginationDecrementActions) => {
+export default (state = initialState, action: any) => {
   switch (action.type) {
     case paginationIncrementTypes.INCREMENT_PAGINATION_ACTION:
       return {
