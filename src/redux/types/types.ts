@@ -1,6 +1,9 @@
 import { IPost } from "../../models/IPost";
 import { postTypes } from "../actionsTypes/postsTypes";
-import { paginationTypes } from "../actionsTypes/paginationTypes";
+import {
+  paginationIncrementTypes,
+  paginationDecrementTypes,
+} from "../actionsTypes/paginationTypes";
 
 export interface PostsState {
   pending: boolean;
@@ -45,17 +48,30 @@ export interface FetchPaginationFailurePayload {
   error: string;
 }
 
-export interface FetchPaginationRequest {
-  type: typeof paginationTypes.INCREMENT_PAGINATION_ACTION;
+export interface FetchPaginationIncrementRequest {
+  type: typeof paginationIncrementTypes.INCREMENT_PAGINATION_ACTION;
 }
 
-export type FetchPaginationSuccess = {
-  type: typeof paginationTypes.INCREMENT_PAGINATION_SUCCESS;
+export type FetchPaginationIncrementSuccess = {
+  type: typeof paginationIncrementTypes.INCREMENT_PAGINATION_SUCCESS;
   payload: FetchPaginationSuccessPayload;
 };
+export type FetchPaginationIncrementFailure = {
+  type: typeof paginationIncrementTypes.INCREMENT_PAGINATION_FAILURE;
+  payload: FetchPaginationFailurePayload;
+};
 
-export type FetchPaginationFailure = {
-  type: typeof paginationTypes.INCREMENT_PAGINATION_FAILURE;
+
+export interface FetchPaginationDecrementRequest {
+  type: typeof paginationDecrementTypes.DECREMENT_PAGINATION_ACTION;
+}
+
+export type FetchPaginationDecrementSuccess = {
+  type: typeof paginationDecrementTypes.DECREMENT_PAGINATION_SUCCESS;
+  payload: FetchPaginationSuccessPayload;
+};
+export type FetchPaginationDecrementFailure = {
+  type: typeof paginationDecrementTypes.DECREMENT_PAGINATION_FAILURE;
   payload: FetchPaginationFailurePayload;
 };
 
@@ -64,7 +80,12 @@ export type PostsActions =
   | FetchPostsSuccess
   | FetchPostsFailure;
 
-export type PaginationActions =
-  | FetchPaginationRequest
-  | FetchPaginationSuccess
-  | FetchPaginationFailure;
+export type PaginationIncrementActions =
+  | FetchPaginationIncrementRequest
+  | FetchPaginationIncrementSuccess
+  | FetchPaginationIncrementFailure
+
+  export type PaginationDecrementActions =
+  FetchPaginationDecrementRequest |
+  FetchPaginationDecrementSuccess |
+  FetchPaginationDecrementFailure;

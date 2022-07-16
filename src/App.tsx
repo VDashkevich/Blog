@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPostsRequest } from "./redux/actions/postsActions/postsActions";
+import { RootState } from "./redux/reducers/rootReducer";
+
 import Header from "./components/Header";
 import ContentPage from "./pages/ContentPage";
 import Footer from "./components/Footer";
@@ -15,6 +20,8 @@ import Tab from "./components/Tab";
 import Pagination from "./components/Pagination";
 import Button from "./components/Button";
 import SignIn from "./pages/SignIn";
+import MainLayout from "./components/MainLayout";
+import BasicSelect from "./components/BasicSelect";
 import "./App.css";
 
 function App() {
@@ -32,9 +39,8 @@ function App() {
           ["AppDark"]: !isLightTheme,
         })}
       >
-        <Header />
-        <MainPage />
-        <Footer />
+        <MainLayout/>
+         <MainPage/>
       </div>
     </ThemeModeProvider>
   );

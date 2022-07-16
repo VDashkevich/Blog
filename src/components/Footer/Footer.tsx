@@ -16,7 +16,7 @@ const Footer: FC<FooterProps> = ({}: any) => {
         ["MainContainerFooterDark"]: !isLightTheme,
       })}
     >
-      <div className="FooterCopywriter">© 2022 Blogolog</div>
+      <div className="FooterCopywriter">© 2022 Blogologo</div>
       <div className="FooterCheckBox">
         <div className="FooterCheckBoxTitle">Dark theme</div>
         <div className="FooterCheckBoxButton">

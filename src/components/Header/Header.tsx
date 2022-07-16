@@ -16,7 +16,12 @@ const Header: FC<HeaderProps> = ({}: any) => {
       })}
     >
       <div className="HeaderLogo"></div>
-      <div className="HeaderSearch">
+      <div
+        className={classnames({
+          ["HeaderSearchLight"]: isLightTheme,
+          ["HeaderSearchDark"]: !isLightTheme,
+        })}
+      >
         <input
           className={classnames({
             ["HeaderInputSearchLight"]: isLightTheme,
