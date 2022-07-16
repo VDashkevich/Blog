@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPostsRequest } from "./redux/actions/postsActions/postsActions";
+import { RootState } from "./redux/reducers/rootReducer";
+
 import Header from "./components/Header";
 import ContentPage from "./pages/ContentPage";
 import Footer from "./components/Footer";

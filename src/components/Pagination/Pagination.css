@@ -89,10 +89,12 @@
   cursor: pointer;
 }
 
-.PagNumber {
+.PagNumber,
+.PagNumber.active {
   transition: 0.5s;
 }
-.PagNumber:hover {
+.PagNumber:hover,
+.PagNumber.active {
   color: #6c1bdb;
 }
 
