@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import "./Card.css";
 import classnames from "classnames";
+import {Route, Link, Routes, useParams} from 'react-router-dom';
+
 import { Theme, UseThemeContext } from "./../../context/ThemeModeContext";
 
 type CardProps = {
@@ -21,7 +23,7 @@ const PostCard: FC<CardProps> = ({ id, image, text, date }) => {
     return b.toString();
   }
   return (
-    <div>
+    <Link to={`content/${id}`}>
       <div
         className={classnames({
           ["postContentLight"]: isLightTheme,
@@ -51,7 +53,7 @@ const PostCard: FC<CardProps> = ({ id, image, text, date }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

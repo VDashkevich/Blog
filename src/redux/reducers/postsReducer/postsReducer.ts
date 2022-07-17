@@ -5,6 +5,7 @@ const initialState: PostsState = {
   pending: false,
   posts: [],
   error: null,
+  selectedPost: null,
 };
 
 export default (state = initialState, action: PostsActions) => {
@@ -19,6 +20,7 @@ export default (state = initialState, action: PostsActions) => {
         ...state,
         pending: false,
         posts: action.payload.posts, 
+        selectedPost: null,
         error: null
       };
     case postTypes.FETCH_POST_FAILURE:
@@ -26,8 +28,29 @@ export default (state = initialState, action: PostsActions) => {
         ...state,
         pending: false,
         posts: [],
+        selectedPost: null,
         error: action.payload.error
       };
+      case postTypes.FETCH_POST_BY_ID_REQUEST:
+        return {
+          ...state,
+          pending: true
+        };
+      case postTypes.FETCH_POST_BY_ID_SUCCESS:
+        return {
+          ...state,
+          pending: false, 
+          selectedPost: action.payload.selectedPost,
+          error: null
+        };
+      case postTypes.FETCH_POST_BY_ID_FAILURE:
+        return {
+          ...state,
+          pending: false,
+          posts: [],
+          selectedPost: null,
+          error: action.payload.error
+        };
     default:
       return {
         ...state

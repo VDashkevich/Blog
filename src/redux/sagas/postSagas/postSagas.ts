@@ -4,6 +4,9 @@ import { IPost } from "../../../models/IPost";
 import {
   fetchPostsFailure,
   fetchPostsSuccess,
+  fetchPostByIdFailure,
+  fetchPostByIdSuccess,
+  fetchPostByIdRequest
 } from "../../actions/postsActions/postsActions";
 import { postTypes } from "../../actionsTypes/postsTypes";
 import { API_ROOT } from "../rootSaga";
@@ -41,8 +44,30 @@ function* fetchPostsSaga() {
   }
 }
 
+function* fetchPostByIdSaga(action:any) {
+    try { 
+      const getPost = (id: number) =>
+        axios.get<IPost[]>(`${API_ROOT}/blogs/${id}`);
+
+      const response: ResponseGenerator = yield call(getPost, action.id);
+
+      yield put(
+        fetchPostByIdSuccess({
+            selectedPost: response.data,
+        })
+      );
+    } catch (e: any) {
+      yield put(
+        fetchPostByIdFailure({
+          error: e.message,
+        })
+      );
+    }
+  }
+
 function* postsSaga() {
   yield all([takeLatest(postTypes.FETCH_POST_REQUEST, fetchPostsSaga)]);
-}
+  yield all([takeLatest(postTypes.FETCH_POST_BY_ID_REQUEST, fetchPostByIdSaga)]);
+} 
 
 export default postsSaga;

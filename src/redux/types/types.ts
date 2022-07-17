@@ -9,6 +9,7 @@ export interface PostsState {
   pending: boolean;
   posts: IPost[];
   error: string | null;
+  selectedPost: any;
 }
 
 export interface PaginationState {
@@ -20,6 +21,14 @@ export interface PaginationState {
 
 export interface FetchPostsSuccessPayload {
   posts: IPost[];
+}
+
+export interface FetchPostSuccessPayload {
+  selectedPost: any;
+}
+
+export interface FetchPostFailurePayload {
+  error: string;
 }
 
 export interface FetchPostsFailurePayload {
@@ -38,6 +47,21 @@ export type FetchPostsSuccess = {
 export type FetchPostsFailure = {
   type: typeof postTypes.FETCH_POST_FAILURE;
   payload: FetchPostsFailurePayload;
+};
+
+export interface FetchPostByIdRequest {
+  type: typeof postTypes.FETCH_POST_BY_ID_REQUEST;
+  id: number;
+}
+
+export type FetchPostByIdSuccess = {
+  type: typeof postTypes.FETCH_POST_BY_ID_SUCCESS;
+  payload: FetchPostSuccessPayload;
+};
+
+export type FetchPostByIdFailure = {
+  type: typeof postTypes.FETCH_POST_BY_ID_FAILURE;
+  payload: FetchPostFailurePayload;
 };
 
 export interface FetchPaginationSuccessPayload {
@@ -61,7 +85,6 @@ export type FetchPaginationIncrementFailure = {
   payload: FetchPaginationFailurePayload;
 };
 
-
 export interface FetchPaginationDecrementRequest {
   type: typeof paginationDecrementTypes.DECREMENT_PAGINATION_ACTION;
 }
@@ -78,14 +101,17 @@ export type FetchPaginationDecrementFailure = {
 export type PostsActions =
   | FetchPostsRequest
   | FetchPostsSuccess
-  | FetchPostsFailure;
+  | FetchPostsFailure
+  | FetchPostByIdRequest
+  | FetchPostByIdSuccess
+  | FetchPostByIdFailure;
 
 export type PaginationIncrementActions =
   | FetchPaginationIncrementRequest
   | FetchPaginationIncrementSuccess
-  | FetchPaginationIncrementFailure
+  | FetchPaginationIncrementFailure;
 
-  export type PaginationDecrementActions =
-  FetchPaginationDecrementRequest |
-  FetchPaginationDecrementSuccess |
-  FetchPaginationDecrementFailure;
+export type PaginationDecrementActions =
+  | FetchPaginationDecrementRequest
+  | FetchPaginationDecrementSuccess
+  | FetchPaginationDecrementFailure;
