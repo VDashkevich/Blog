@@ -1,7 +1,10 @@
 import React, { FC, useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { incrementPaginationActions, decrementPaginationActions } from "../../redux/actions/paginationActions/paginationActions";
+import {
+  incrementPaginationActions,
+  decrementPaginationActions,
+} from "../../redux/actions/paginationActions/paginationActions";
 import { RootState } from "../../redux/reducers/rootReducer";
 
 import "./Pagination.css";
@@ -33,7 +36,7 @@ const Pagination: FC<PaginationProps> = ({}: any) => {
   };
 
   const getPages = () => {
-    const postLength = 100;
+    const postLength = 50;
 
     setTotalPages(Math.ceil(postLength / itemsPerPage));
   };
@@ -46,12 +49,6 @@ const Pagination: FC<PaginationProps> = ({}: any) => {
       })}
     >
       <div className="PagNavBox">
-        <span
-          className={classnames({
-            ["fa-solid fa-arrow-left-long PagIconLight"]: isLightTheme,
-            ["fa-solid fa-arrow-left-long PagIconDark"]: !isLightTheme,
-          })}
-        ></span>
         <button
           type="button"
           className={classnames({
@@ -61,6 +58,12 @@ const Pagination: FC<PaginationProps> = ({}: any) => {
           onClick={setPrevPage}
           disabled={currentPage === 1}
         >
+          <span
+            className={classnames({
+              ["fa-solid fa-arrow-left-long PagIconLight"]: isLightTheme,
+              ["fa-solid fa-arrow-left-long PagIconDark"]: !isLightTheme,
+            })}
+          ></span>
           Prev
         </button>
       </div>
@@ -92,13 +95,13 @@ const Pagination: FC<PaginationProps> = ({}: any) => {
           disabled={currentPage === totalPages}
         >
           Next
+          <span
+            className={classnames({
+              ["fa-solid fa-arrow-right-long PagIconLight"]: isLightTheme,
+              ["fa-solid fa-arrow-right-long PagIconDark"]: !isLightTheme,
+            })}
+          ></span>
         </button>
-        <span
-          className={classnames({
-            ["fa-solid fa-arrow-right-long PagIconLight"]: isLightTheme,
-            ["fa-solid fa-arrow-right-long PagIconDark"]: !isLightTheme,
-          })}
-        ></span>
       </div>
     </div>
   );

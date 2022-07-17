@@ -1,4 +1,4 @@
-import { paginationDecrementTypes, paginationIncrementTypes } from "../../actionsTypes/paginationTypes"; 
+import { paginationDecrementTypes, paginationIncrementTypes } from "../../actionsTypes/paginationTypes";
 import { PaginationIncrementActions, PaginationDecrementActions, PaginationState } from "../../types/types";
 
 const initialState: PaginationState = {

@@ -2,11 +2,18 @@ import React, { useState, useEffect } from "react";
 
 import { ThemeModeProvider } from "./context/ThemeModeProvider";
 import { Theme, UseThemeContext } from "./context/ThemeModeContext";
-import {   BrowserRouter as Router  } from "react-router-dom";
-
-import RouterC from "./pages/Router"; 
-import classnames from "classnames"; 
+import { Provider } from "react-redux";
+import Card from "./components/Card";
+import classnames from "classnames";
+import Tab from "./components/Tab";
+import Pagination from "./components/Pagination";
+import Button from "./components/Button";
+import SignIn from "./pages/SignIn";
+import MainLayout from "./components/MainLayout";
+import BasicSelect from "./components/BasicSelect";
 import "./App.css";
+import Router from "./pages/Router";
+
 
 function App() {
   const [theme, setTheme] = useState<Theme>(Theme.Light);
@@ -23,9 +30,8 @@ function App() {
           ["AppDark"]: !isLightTheme,
         })}
       >
-        <Router>
-          <RouterC />
-          </Router>
+        <Router />
+
       </div>
     </ThemeModeProvider>
   );

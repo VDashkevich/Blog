@@ -15,6 +15,11 @@ const PostCard: FC<CardProps> = ({ id, image, text, date }) => {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5xPwQFMwqQNGPSrW3NBueZixbwKsnVSogOA&usqp=CAU";
   const { theme } = UseThemeContext();
   const isLightTheme = theme === Theme.Light;
+
+  function newDateFormat(date: string) {
+    const b = new Date(date);
+    return b.toString();
+  }
   return (
     <div>
       <div
@@ -34,10 +39,9 @@ const PostCard: FC<CardProps> = ({ id, image, text, date }) => {
               ["postsDateDark"]: !isLightTheme,
             })}
           >
-            {date}
+            {newDateFormat(date)}
           </div>
           <div
-            
             className={classnames({
               ["postsTextLight"]: isLightTheme,
               ["postsTextDark"]: !isLightTheme,

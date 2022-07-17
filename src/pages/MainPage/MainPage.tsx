@@ -19,13 +19,13 @@ type MainPageProps = {};
 const MainPage: FC<MainPageProps> = ({}: any) => {
   const { theme } = UseThemeContext();
   const isLightTheme = theme === Theme.Light;
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const {
     posts: { pending, posts, error },
     pagination: { currentPage, itemsPerPage },
   } = useSelector((state: RootState) => state);
   useEffect(() => {
-    dispatch(fetchPostsRequest()); 
+    dispatch(fetchPostsRequest());
   }, []);
 
   return (
@@ -48,9 +48,6 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
             })}
           >
             Blog
-          </div>
-          <div className="MainTab">
-            <Tab />
           </div>
           <div className="MainSort">
             <div className="MainSortButtons">
@@ -88,17 +85,17 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
               </div>
             </div>
             <div className="MainSortTab">
-              <BasicSelect/>
+              <BasicSelect />
             </div>
           </div>
           <div className="MainPosts">
-            {posts?.map((item:IPost, index: number) => (
+            {posts?.map((item: IPost, index: number) => (
               <Card
                 key={item.id}
                 id={`${item.id}`}
                 image={`${item.imageUrl}`}
                 text={item.title}
-                date={"April 20, 2021"}
+                date={`${item.publishedAt}`}
               />
             ))}
           </div>
