@@ -12,7 +12,6 @@ import SearchPage from "./pages/SearchPage";
 import Toggle from "./components/Toggle";
 import { ThemeModeProvider } from "./context/ThemeModeProvider";
 import { Theme, UseThemeContext } from "./context/ThemeModeContext";
-import Router from "./pages/Router";
 import { Provider } from "react-redux";
 import Card from "./components/Card";
 import classnames from "classnames";
@@ -23,6 +22,8 @@ import SignIn from "./pages/SignIn";
 import MainLayout from "./components/MainLayout";
 import BasicSelect from "./components/BasicSelect";
 import "./App.css";
+import Router from "./pages/Router";
+
 
 function App() {
   const [theme, setTheme] = useState<Theme>(Theme.Light);
@@ -39,8 +40,8 @@ function App() {
           ["AppDark"]: !isLightTheme,
         })}
       >
-        <MainLayout/>
-         <MainPage/>
+        <Router />
+
       </div>
     </ThemeModeProvider>
   );

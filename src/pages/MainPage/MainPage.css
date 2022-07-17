@@ -100,8 +100,13 @@
 }
 
 .MainPosts {
+  width: 1120px;
+  height: 100%;
+  gap: 10px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 20px;
   justify-content: space-between;
   margin-top: 64px;
 }

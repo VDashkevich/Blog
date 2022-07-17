@@ -20,38 +20,13 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
   const { theme } = UseThemeContext();
   const isLightTheme = theme === Theme.Light;
   const dispatch = useDispatch();
-  const [postsToShow, setPostsToShow] = useState<Array<IPost>>([]);
   const {
     posts: { pending, posts, error },
     pagination: { currentPage, itemsPerPage },
   } = useSelector((state: RootState) => state);
   useEffect(() => {
-    dispatch(fetchPostsRequest()); 
+    dispatch(fetchPostsRequest());
   }, []);
-
-  useEffect(() => { 
-    getItemsToShow();
-  }, [currentPage, posts]);
-
-  const getItemsToShow = () => {
-    if (posts.length) {
-      let validatedPost: Array<IPost> = [...posts];
-      const totalPages = Math.ceil(posts.length / itemsPerPage);
-      const startIndex = currentPage === 1 ? currentPage - 1 : (currentPage * itemsPerPage) - itemsPerPage;
-
-      validatedPost = currentPage === totalPages ? 
-      validatedPost.slice(startIndex) :
-      validatedPost.slice(startIndex, startIndex + itemsPerPage );
-
-      console.log('validatedPost', startIndex)
-      console.log('posts', posts[9])  
-      console.log('validatedPost', posts[9])  
-      
-
-
-      setPostsToShow(validatedPost)
-    }
-  };
 
   return (
     <>
@@ -73,9 +48,6 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
             })}
           >
             Blog
-          </div>
-          <div className="MainTab">
-            <Tab />
           </div>
           <div className="MainSort">
             <div className="MainSortButtons">
@@ -113,17 +85,17 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
               </div>
             </div>
             <div className="MainSortTab">
-              <BasicSelect/>
+              <BasicSelect />
             </div>
           </div>
           <div className="MainPosts">
-            { postsToShow?.map((item:IPost, index: number) => (
+            {posts?.map((item: IPost, index: number) => (
               <Card
                 key={item.id}
                 id={`${item.id}`}
                 image={`${item.imageUrl}`}
                 text={item.title}
-                date={"April 20, 2021"}
+                date={`${item.publishedAt}`}
               />
             ))}
           </div>
