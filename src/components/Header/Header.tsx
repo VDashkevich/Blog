@@ -24,6 +24,8 @@ const Header: FC<HeaderProps> = ({}: any) => {
   const { theme } = UseThemeContext();
   const isLightTheme = theme === Theme.Light;
   const [value, setValue] = useState("");
+  const auth = localStorage.getItem("authToken");
+
   const dispatch = useDispatch();
   const {
     posts: { pending, posts, error },
@@ -75,6 +77,7 @@ const Header: FC<HeaderProps> = ({}: any) => {
       })}
     >
       <Link to={`/`} className="HeaderLogo"></Link>
+      { auth &&
       <div
         className={classnames({
           ["HeaderSearchLight"]: isLightTheme,
@@ -97,11 +100,12 @@ const Header: FC<HeaderProps> = ({}: any) => {
             ["fa-solid fa-magnifying-glass iconDark"]: !isLightTheme,
           })}
         ></i>
-      </div>
-      <div className="HeaderUser">
+      </div>}
+      { auth && <div className="HeaderUser">
         <div className="HeaderUserIcon">
           <i className="fa-regular fa-user"></i>
         </div>
+        
         <div
           className={classnames({
             ["HeaderUserNameLight"]: isLightTheme,
@@ -110,7 +114,7 @@ const Header: FC<HeaderProps> = ({}: any) => {
         >
           Artem Malkin
         </div>
-      </div>
+      </div> }
     </div>
   );
 };

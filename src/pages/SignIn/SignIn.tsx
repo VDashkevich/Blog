@@ -1,16 +1,28 @@
-import React, { FC, FocusEventHandler } from "react";
+import React, { FC, FocusEventHandler, useEffect } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { Theme, UseThemeContext } from "../../context/ThemeModeContext";
 import classnames from "classnames";
 import "./SignIn.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 type SignInProps = {};
 
 const SignIn: FC<SignInProps> = ({}: any) => {
   const { theme } = UseThemeContext();
   const isLightTheme = theme === Theme.Light;
+  const navigate = useNavigate(); 
+  const auth = localStorage.getItem("authToken");
+  useEffect(() => {
+if(auth) {
+  navigate("/");
+}
+    
+  },[])
+  const handleLogin = () => {
+    localStorage.setItem("authToken", "123");
+    navigate("/");
+  };
   return (
     <div
       className={classnames({
@@ -76,6 +88,7 @@ const SignIn: FC<SignInProps> = ({}: any) => {
         </div>
         <div className="SignInButtonBlock">
           <Button
+            onClick={handleLogin}
             btnContent={"Sign In"}
             className=" button_primary SignInButton"
           />
@@ -87,14 +100,15 @@ const SignIn: FC<SignInProps> = ({}: any) => {
           })}
         >
           <span>Don’t have an account?</span>
-          <span
+          <button
+            type="button"
             className={classnames({
               ["SignInSignUpLinkLight"]: isLightTheme,
               ["SignInSignUpLinkDark"]: !isLightTheme,
             })}
           >
             Sign Up
-          </span>
+          </button>
         </div>
       </div>
     </div>
