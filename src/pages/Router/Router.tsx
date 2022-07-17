@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Route, Routes, Navigate, Outlet, BrowserRouter } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  Navigate,
+  Outlet,
+  BrowserRouter,
+} from "react-router-dom";
 import SearchPage from "../SearchPage";
 import MainPage from "../MainPage";
 import ContentPage from "../ContentPage";
@@ -14,14 +20,13 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route path="/"  element={<MainPage />}>
-           
-          </Route>
+          <Route path="/" element={<MainPage />}></Route>
           <Route path={"/content/:id"} element={<ContentPage />} />
+          <Route path={"/search"} element={<SearchPage />} />
           <Route path={"test"} element={<SignIn />}></Route>
         </Route>
       </Routes>
-      </BrowserRouter>
+    </BrowserRouter>
   );
 };
 

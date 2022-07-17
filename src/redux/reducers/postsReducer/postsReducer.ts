@@ -20,7 +20,7 @@ export default (state = initialState, action: PostsActions) => {
         ...state,
         pending: false,
         posts: action.payload.posts, 
-        selectedPost: null,
+        selectedPost: null, 
         error: null
       };
     case postTypes.FETCH_POST_FAILURE:

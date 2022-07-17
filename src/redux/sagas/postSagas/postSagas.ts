@@ -6,7 +6,7 @@ import {
   fetchPostsSuccess,
   fetchPostByIdFailure,
   fetchPostByIdSuccess,
-  fetchPostByIdRequest
+  fetchPostByIdRequest,
 } from "../../actions/postsActions/postsActions";
 import { postTypes } from "../../actionsTypes/postsTypes";
 import { API_ROOT } from "../rootSaga";
@@ -23,12 +23,13 @@ export interface ResponseGenerator {
 
 const getItemsPerPage = (state: IPagination) => state.pagination.itemsPerPage;
 
-function* fetchPostsSaga() {
+function* fetchPostsSaga(action: any = "") {
   try {
-    let itemsPerPage: number = yield select(getItemsPerPage);
-    const getPosts = () =>
-      axios.get<IPost[]>(`${API_ROOT}/blogs?_limit=${itemsPerPage}`);
-    const response: ResponseGenerator = yield call(getPosts);
+    let itemsPerPage: number = yield select(getItemsPerPage); 
+    const getPosts = (param: any) =>
+      axios.get<IPost[]>(`${API_ROOT}/blogs?_limit=${itemsPerPage}${param}`);
+
+    const response: ResponseGenerator = yield call(getPosts, action.param);
 
     yield put(
       fetchPostsSuccess({
@@ -44,30 +45,32 @@ function* fetchPostsSaga() {
   }
 }
 
-function* fetchPostByIdSaga(action:any) {
-    try { 
-      const getPost = (id: number) =>
-        axios.get<IPost[]>(`${API_ROOT}/blogs/${id}`);
+function* fetchPostByIdSaga(action: any) {
+  try {
+    const getPost = (id: number) =>
+      axios.get<IPost[]>(`${API_ROOT}/blogs/${id}`);
 
-      const response: ResponseGenerator = yield call(getPost, action.id);
+    const response: ResponseGenerator = yield call(getPost, action.id);
 
-      yield put(
-        fetchPostByIdSuccess({
-            selectedPost: response.data,
-        })
-      );
-    } catch (e: any) {
-      yield put(
-        fetchPostByIdFailure({
-          error: e.message,
-        })
-      );
-    }
+    yield put(
+      fetchPostByIdSuccess({
+        selectedPost: response.data,
+      })
+    );
+  } catch (e: any) {
+    yield put(
+      fetchPostByIdFailure({
+        error: e.message,
+      })
+    );
   }
+}
 
 function* postsSaga() {
   yield all([takeLatest(postTypes.FETCH_POST_REQUEST, fetchPostsSaga)]);
-  yield all([takeLatest(postTypes.FETCH_POST_BY_ID_REQUEST, fetchPostByIdSaga)]);
-} 
+  yield all([
+    takeLatest(postTypes.FETCH_POST_BY_ID_REQUEST, fetchPostByIdSaga),
+  ]);
+}
 
 export default postsSaga;

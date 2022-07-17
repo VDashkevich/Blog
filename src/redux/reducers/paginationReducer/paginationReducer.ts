@@ -1,4 +1,4 @@
-import { paginationDecrementTypes, paginationIncrementTypes } from "../../actionsTypes/paginationTypes";
+import { paginationDecrementTypes, paginationIncrementTypes , paginationClearTypes} from "../../actionsTypes/paginationTypes";
 import { PaginationIncrementActions, PaginationDecrementActions, PaginationState } from "../../types/types";
 
 const initialState: PaginationState = {
@@ -52,6 +52,11 @@ export default (state = initialState, action: any) => {
           itemsPerPage: null,
           error: action.payload.error,
         };
+        case paginationClearTypes.ClEAR_PAGINATION_ACTION:
+      return {
+        ...state, 
+        currentPage: 1,
+      };
     default:
       return {
         ...state,

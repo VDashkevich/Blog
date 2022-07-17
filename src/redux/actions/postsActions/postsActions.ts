@@ -10,8 +10,9 @@ import {
   FetchPostByIdFailure
 } from "../../types/types";
 
-export const fetchPostsRequest = (): FetchPostsRequest => ({
+export const fetchPostsRequest = (param: any): FetchPostsRequest => ({
   type: postTypes.FETCH_POST_REQUEST,
+  param
 });
 
 export const fetchPostsSuccess = (

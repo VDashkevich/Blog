@@ -11,4 +11,6 @@ export enum paginationDecrementTypes {
 }
 
 
-
+export enum paginationClearTypes {
+  ClEAR_PAGINATION_ACTION = "ClEAR_PAGINATION_ACTION", 
+}
