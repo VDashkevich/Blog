@@ -9,6 +9,8 @@ import Button from "../../components/Button";
 import Card from "../../components/Card";
 import { Theme, UseThemeContext } from "../../context/ThemeModeContext";
 import classnames from "classnames";
+import { IPost } from "../../models/IPost";
+
 
 type ContentPageProps = {};
 
@@ -19,7 +21,7 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
     const params = useParams();
   const dispatch = useDispatch();
   const {
-    posts: { pending, selectedPost, error },
+    posts: { pending, selectedPost, error, posts },
     pagination: { currentPage, itemsPerPage },
   } = useSelector((state: RootState) => state);
   useEffect(() => {
@@ -27,7 +29,7 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
        dispatch(fetchPostByIdRequest(Number(params.id)));  
     }
    
-  }, []);
+  }, [params.id]);
   console.log(selectedPost)
  
   return (
@@ -106,30 +108,15 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
           </div>
         </div>
         <div className="ContentPagePosts">
-          <Card
-            id={"0"}
-            image={""}
-            text={
-              "Astronauts prep for new solar arrays on nearly seven-hour spacewalk"
-            }
-            date={"April 20, 2021"}
-          />
-          <Card
-            id={"1"}
-            image={""}
-            text={
-              "Astronauts prep for new solar arrays on nearly seven-hour spacewalk"
-            }
-            date={"April 20, 2021"}
-          />
-          <Card
-            id={"1"}
-            image={""}
-            text={
-              "Astronauts prep for new solar arrays on nearly seven-hour spacewalk"
-            }
-            date={"April 20, 2021"}
-          />
+          {posts?.slice(0,3).map((item: IPost, index: number) => (
+              <Card
+                key={item.id}
+                id={`${item.id}`}
+                image={`${item.imageUrl}`}
+                text={item.title}
+                date={`${item.publishedAt}`}
+              />
+            ))}
         </div>
       </div>
       )}

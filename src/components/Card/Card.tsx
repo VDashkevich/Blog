@@ -23,7 +23,7 @@ const PostCard: FC<CardProps> = ({ id, image, text, date }) => {
     return b.toString();
   }
   return (
-    <Link to={`content/${id}`}>
+    <Link to={`/content/${id}`}>
       <div
         className={classnames({
           ["postContentLight"]: isLightTheme,
