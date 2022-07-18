@@ -91,14 +91,15 @@ const SignIn: FC<SignInProps> = ({}: any) => {
           })}
         >
           <span>Don’t have an account?</span>
-          <span
+          <button
+            type="button"
             className={classnames({
               ["SignInSignUpLinkLight"]: isLightTheme,
               ["SignInSignUpLinkDark"]: !isLightTheme,
             })}
           >
             Sign Up
-          </span>
+          </button>
         </div>
       </div>
     </div>

@@ -56,7 +56,7 @@ const SearchPage: FC<SearchPageProps> = ({}: any) => {
                 date={`${item.publishedAt}`}
               />
             ))
-          : "no results"}
+          : "No results"}
       </div>
       <div className="SearchPagePagination">
         <Pagination />
