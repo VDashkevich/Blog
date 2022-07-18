@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 20px 32px;
+  padding: 0 32px;
 }
 .HeaderMainBoxDark {
   position: absolute;
@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 20px 32px;
+  padding: 0 32px;
 }
 
 .HeaderLogo {
@@ -77,6 +77,7 @@
   font-size: 16px;
   line-height: 24px;
   padding-left: 32px;
+  box-sizing: border-box;
 }
 .HeaderInputSearchLight:focus {
   background: rgba(49, 48, 55, 0.1);
@@ -97,6 +98,7 @@
   line-height: 24px;
   color: white;
   padding-left: 32px;
+  box-sizing: border-box;
 }
 
 .HeaderInputSearchDark:focus {
@@ -109,6 +111,7 @@
   gap: 16px;
   height: 92px;
   min-width: 230px;
+  box-sizing: border-box;
 }
 .HeaderUserIcon {
   width: 48px;
@@ -120,6 +123,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .HeaderUserNameLight {
@@ -159,7 +163,7 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 20px 32px;
+    padding: 0 32px;
   }
   .HeaderMainBoxDark {
     position: absolute;
@@ -171,7 +175,7 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 20px 32px;
+    padding: 0 32px;
   }
 
   .HeaderLogo {
@@ -226,6 +230,7 @@
     font-size: 16px;
     line-height: 24px;
     padding-left: 32px;
+    box-sizing: border-box;
   }
   .HeaderInputSearchLight:focus {
     background: rgba(49, 48, 55, 0.1);
@@ -246,6 +251,7 @@
     line-height: 24px;
     color: white;
     padding-left: 32px;
+    box-sizing: border-box;
   }
   .HeaderInputSearchDark:focus {
     background: rgba(255, 255, 255, 0.1);
@@ -257,7 +263,7 @@
     justify-content: center;
     gap: 16px;
     height: 92px;
-    min-width: 230px;
+    min-width: 160px;
   }
   .HeaderUserIcon {
     width: 48px;
@@ -302,14 +308,14 @@
   .HeaderMainBoxLight {
     position: absolute;
     top: 0;
-    min-width: 100%;
+    width: 320px;
     height: 96px;
     background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 18px 24px;
+    padding: 0 24px !important;
   }
   .HeaderMainBoxDark {
     position: absolute;
@@ -321,7 +327,7 @@
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 18px 24px;
+    padding: 0 24px !important;
   }
 
   .HeaderLogo {
