@@ -1,3 +1,8 @@
+.postContentMain {
+  text-decoration: none;
+  transition: 0.5s;
+}
+
 .postContentLight {
   display: flex;
   flex-direction: column;
@@ -8,7 +13,6 @@
   border-radius: 16px;
   transition: 0.5s;
   cursor: pointer;
-  margin-top: 168px;
 }
 
 .postContentDark {
@@ -21,7 +25,6 @@
   border-radius: 16px;
   transition: 0.5s;
   cursor: pointer;
-  margin-top: 168px;
 }
 
 .postImgBorder {
@@ -35,13 +38,14 @@
 }
 
 .postImg {
-  width: 352px;
-  height: 208px;
+  width: 100%;
+  height: 100%;
   left: 0px;
   top: 0px;
   border-radius: 16px 16px 0 0;
   z-index: 1;
   transition: 0.5s;
+  object-fit: cover;
 }
 
 .postImgBox {
@@ -77,6 +81,9 @@
   font-size: 16px;
   line-height: 24px;
   color: rgba(49, 48, 55, 0.5);
+  text-decoration: none !important;
+  border: none !important;
+  text-align: start;
 }
 .postsDateDark {
   font-family: "Inter";
@@ -85,6 +92,9 @@
   font-size: 16px;
   line-height: 24px;
   color: rgba(255, 255, 255, 0.5);
+  text-decoration: none !important;
+  border: none !important;
+  text-align: start;
 }
 .postsTextLight {
   width: 287px;
@@ -99,6 +109,8 @@
   overflow: hidden;
   line-clamp: 3;
   text-overflow: ellipsis;
+  text-decoration: none !important;
+  border: none !important;
 }
 
 .postsTextDark {
@@ -114,15 +126,18 @@
   overflow: hidden;
   line-clamp: 3;
   text-overflow: ellipsis;
+  text-decoration: none !important;
+  border: none !important;
 }
 
-.postImg:hover {
+/* .postImg:hover {
   width: 352px;
   height: 208px;
   left: 0px;
   top: 0px;
   border-radius: 16px 16px 0 0;
-}
+  transition: 0.5s;
+} */
 
 .postImgBox:hover {
   width: 352px;

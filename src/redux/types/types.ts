@@ -1,22 +1,35 @@
-import { IPost } from "../../models/IPost"; 
+import { IPost } from "../../models/IPost";
 import { postTypes } from "../actionsTypes/postsTypes";
-import { paginationTypes } from '../actionsTypes/paginationTypes';
+import {
+  paginationIncrementTypes,
+  paginationDecrementTypes,
+  paginationClearTypes,
+} from "../actionsTypes/paginationTypes";
 
 export interface PostsState {
   pending: boolean;
   posts: IPost[];
   error: string | null;
+  selectedPost: any;
 }
 
 export interface PaginationState {
-    pending: boolean; 
-    currentPage: number;
-    itemsPerPage: number;
-    error: string | null;
-  }
+  pending: boolean;
+  currentPage: number;
+  itemsPerPage: number;
+  error: string | null;
+}
 
 export interface FetchPostsSuccessPayload {
   posts: IPost[];
+}
+
+export interface FetchPostSuccessPayload {
+  selectedPost: any;
+}
+
+export interface FetchPostFailurePayload {
+  error: string;
 }
 
 export interface FetchPostsFailurePayload {
@@ -25,6 +38,7 @@ export interface FetchPostsFailurePayload {
 
 export interface FetchPostsRequest {
   type: typeof postTypes.FETCH_POST_REQUEST;
+  param: any;
 }
 
 export type FetchPostsSuccess = {
@@ -37,35 +51,75 @@ export type FetchPostsFailure = {
   payload: FetchPostsFailurePayload;
 };
 
+export interface FetchPostByIdRequest {
+  type: typeof postTypes.FETCH_POST_BY_ID_REQUEST;
+  id: number;
+}
+
+export type FetchPostByIdSuccess = {
+  type: typeof postTypes.FETCH_POST_BY_ID_SUCCESS;
+  payload: FetchPostSuccessPayload;
+};
+
+export type FetchPostByIdFailure = {
+  type: typeof postTypes.FETCH_POST_BY_ID_FAILURE;
+  payload: FetchPostFailurePayload;
+};
+
 export interface FetchPaginationSuccessPayload {
-    currentPage: number; 
-  }
-  
-  export interface FetchPaginationFailurePayload {
-    error: string;
-  }
-  
-  export interface FetchPaginationRequest {
-    type: typeof paginationTypes.INCREMENT_PAGINATION_ACTION;
-  }
-  
-  export type FetchPaginationSuccess = {
-    type: typeof paginationTypes.INCREMENT_PAGINATION_SUCCESS;
-    payload: FetchPaginationSuccessPayload;
-  };
-  
-  export type FetchPaginationFailure = {
-    type: typeof paginationTypes.INCREMENT_PAGINATION_FAILURE;
-    payload: FetchPaginationFailurePayload;
-  };
+  currentPage: number;
+}
+
+export interface FetchPaginationFailurePayload {
+  error: string;
+}
+
+export interface FetchPaginationIncrementRequest {
+  type: typeof paginationIncrementTypes.INCREMENT_PAGINATION_ACTION;
+}
+
+export type FetchPaginationIncrementSuccess = {
+  type: typeof paginationIncrementTypes.INCREMENT_PAGINATION_SUCCESS;
+  payload: FetchPaginationSuccessPayload;
+};
+export type FetchPaginationIncrementFailure = {
+  type: typeof paginationIncrementTypes.INCREMENT_PAGINATION_FAILURE;
+  payload: FetchPaginationFailurePayload;
+};
+
+export interface FetchPaginationDecrementRequest {
+  type: typeof paginationDecrementTypes.DECREMENT_PAGINATION_ACTION;
+}
+
+export type FetchPaginationDecrementSuccess = {
+  type: typeof paginationDecrementTypes.DECREMENT_PAGINATION_SUCCESS;
+  payload: FetchPaginationSuccessPayload;
+};
+export type FetchPaginationDecrementFailure = {
+  type: typeof paginationDecrementTypes.DECREMENT_PAGINATION_FAILURE;
+  payload: FetchPaginationFailurePayload;
+};
+
+export interface ClearPaginationAction {
+  type: typeof paginationClearTypes.ClEAR_PAGINATION_ACTION;
+}
 
 export type PostsActions =
   | FetchPostsRequest
   | FetchPostsSuccess
-  | FetchPostsFailure;
+  | FetchPostsFailure
+  | FetchPostByIdRequest
+  | FetchPostByIdSuccess
+  | FetchPostByIdFailure;
 
+export type PaginationIncrementActions =
+  | FetchPaginationIncrementRequest
+  | FetchPaginationIncrementSuccess
+  | FetchPaginationIncrementFailure;
 
-  export type PaginationActions =
-  | FetchPaginationRequest
-  | FetchPaginationSuccess
-  | FetchPaginationFailure;
+export type PaginationDecrementActions =
+  | FetchPaginationDecrementRequest
+  | FetchPaginationDecrementSuccess
+  | FetchPaginationDecrementFailure;
+
+export type PaginationCLearActions = ClearPaginationAction;

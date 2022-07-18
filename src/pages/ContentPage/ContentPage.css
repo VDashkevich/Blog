@@ -1,6 +1,6 @@
 .ContentPageMainBoxLight {
   width: 1120px;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,10 +8,12 @@
   margin-top: 72px;
   background: #e5e5e5;
   transition: 0.5s;
+  margin-top: 112px;
+  margin-bottom: 150px;
 }
 .ContentPageMainBoxDark {
   width: 1120px;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,6 +21,8 @@
   margin-top: 72px;
   background: #313037;
   transition: 0.5s;
+  margin-bottom: 150px;
+  margin-top: 112px;
 }
 .ContentPageLinkMainLight {
   font-family: "Inter";
@@ -78,7 +82,6 @@
 }
 
 .ContentPageImage {
-  background-image: url(/src/components/Card/Image.svg);
   width: 1120px;
   height: 518px;
   border-radius: 16px;

@@ -4,7 +4,10 @@
   align-items: flex-start;
   margin-top: 72px;
   width: 1120px;
+  height: 100%;
   transition: 0.5s;
+  margin-bottom: 150px;
+  margin-top: 112px;
 }
 .SearchMainMainBoxDark {
   display: flex;
@@ -13,6 +16,9 @@
   margin-top: 72px;
   width: 1120px;
   transition: 0.5s;
+  height: 100%;
+  margin-bottom: 150px;
+  margin-top: 112px;
 }
 
 .SearchPageTitleLight {
@@ -42,6 +48,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-top: 72px;
+  flex-wrap: wrap;
 }
 
 .SearchPagePagination {

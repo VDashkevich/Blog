@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import postReducer from "./postsReducer/postsReducer";
-import paginationReducer from "./paginationReducer/paginationReducer"
+import paginationReducer from "./paginationReducer/paginationReducer";
 
 const rootReducer = combineReducers({
   posts: postReducer,
-  pagination: paginationReducer, 
+  pagination: paginationReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
