@@ -25,7 +25,7 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
     pagination: { currentPage, itemsPerPage },
   } = useSelector((state: RootState) => state);
   useEffect(() => {
-    dispatch(fetchPostsRequest());
+    dispatch(fetchPostsRequest(""));
   }, []);
 
   return (

@@ -11,7 +11,9 @@ const MainLayout: FC<MainLayoutProps> = ({}: any) => {
   return (
     <div>
       <Header />
-      <Outlet />
+      <div className="mainContent">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

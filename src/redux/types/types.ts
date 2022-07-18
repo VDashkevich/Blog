@@ -3,6 +3,7 @@ import { postTypes } from "../actionsTypes/postsTypes";
 import {
   paginationIncrementTypes,
   paginationDecrementTypes,
+  paginationClearTypes,
 } from "../actionsTypes/paginationTypes";
 
 export interface PostsState {
@@ -37,6 +38,7 @@ export interface FetchPostsFailurePayload {
 
 export interface FetchPostsRequest {
   type: typeof postTypes.FETCH_POST_REQUEST;
+  param: any;
 }
 
 export type FetchPostsSuccess = {
@@ -98,6 +100,10 @@ export type FetchPaginationDecrementFailure = {
   payload: FetchPaginationFailurePayload;
 };
 
+export interface ClearPaginationAction {
+  type: typeof paginationClearTypes.ClEAR_PAGINATION_ACTION;
+}
+
 export type PostsActions =
   | FetchPostsRequest
   | FetchPostsSuccess
@@ -115,3 +121,5 @@ export type PaginationDecrementActions =
   | FetchPaginationDecrementRequest
   | FetchPaginationDecrementSuccess
   | FetchPaginationDecrementFailure;
+
+export type PaginationCLearActions = ClearPaginationAction;

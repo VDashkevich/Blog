@@ -7,11 +7,12 @@ import {
   FetchPostsSuccessPayload,
   FetchPostByIdRequest,
   FetchPostByIdSuccess,
-  FetchPostByIdFailure
+  FetchPostByIdFailure,
 } from "../../types/types";
 
-export const fetchPostsRequest = (): FetchPostsRequest => ({
+export const fetchPostsRequest = (param: any): FetchPostsRequest => ({
   type: postTypes.FETCH_POST_REQUEST,
+  param,
 });
 
 export const fetchPostsSuccess = (
@@ -28,22 +29,17 @@ export const fetchPostsFailure = (
   payload,
 });
 
+export const fetchPostByIdRequest = (id: number): FetchPostByIdRequest => ({
+  type: postTypes.FETCH_POST_BY_ID_REQUEST,
+  id,
+});
 
-export const fetchPostByIdRequest = (id: number ): FetchPostByIdRequest => ({
-    type: postTypes.FETCH_POST_BY_ID_REQUEST,
-    id
-  });
-  
-  export const fetchPostByIdSuccess = (
-    payload: any
-  ): FetchPostByIdSuccess => ({
-    type: postTypes.FETCH_POST_BY_ID_SUCCESS,
-    payload,
-  });
-  
-  export const fetchPostByIdFailure = (
-    payload: any
-  ): FetchPostByIdFailure => ({
-    type: postTypes.FETCH_POST_BY_ID_FAILURE,
-    payload,
-  });
+export const fetchPostByIdSuccess = (payload: any): FetchPostByIdSuccess => ({
+  type: postTypes.FETCH_POST_BY_ID_SUCCESS,
+  payload,
+});
+
+export const fetchPostByIdFailure = (payload: any): FetchPostByIdFailure => ({
+  type: postTypes.FETCH_POST_BY_ID_FAILURE,
+  payload,
+});

@@ -13,15 +13,15 @@ export default (state = initialState, action: PostsActions) => {
     case postTypes.FETCH_POST_REQUEST:
       return {
         ...state,
-        pending: true
+        pending: true,
       };
     case postTypes.FETCH_POST_SUCCESS:
       return {
         ...state,
         pending: false,
-        posts: action.payload.posts, 
+        posts: action.payload.posts,
         selectedPost: null,
-        error: null
+        error: null,
       };
     case postTypes.FETCH_POST_FAILURE:
       return {
@@ -29,31 +29,31 @@ export default (state = initialState, action: PostsActions) => {
         pending: false,
         posts: [],
         selectedPost: null,
-        error: action.payload.error
+        error: action.payload.error,
       };
-      case postTypes.FETCH_POST_BY_ID_REQUEST:
-        return {
-          ...state,
-          pending: true
-        };
-      case postTypes.FETCH_POST_BY_ID_SUCCESS:
-        return {
-          ...state,
-          pending: false, 
-          selectedPost: action.payload.selectedPost,
-          error: null
-        };
-      case postTypes.FETCH_POST_BY_ID_FAILURE:
-        return {
-          ...state,
-          pending: false,
-          posts: [],
-          selectedPost: null,
-          error: action.payload.error
-        };
+    case postTypes.FETCH_POST_BY_ID_REQUEST:
+      return {
+        ...state,
+        pending: true,
+      };
+    case postTypes.FETCH_POST_BY_ID_SUCCESS:
+      return {
+        ...state,
+        pending: false,
+        selectedPost: action.payload.selectedPost,
+        error: null,
+      };
+    case postTypes.FETCH_POST_BY_ID_FAILURE:
+      return {
+        ...state,
+        pending: false,
+        posts: [],
+        selectedPost: null,
+        error: action.payload.error,
+      };
     default:
       return {
-        ...state
+        ...state,
       };
   }
 };

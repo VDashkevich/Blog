@@ -1,4 +1,8 @@
-import { paginationDecrementTypes, paginationIncrementTypes } from "../../actionsTypes/paginationTypes";
+import {
+  paginationDecrementTypes,
+  paginationIncrementTypes,
+  paginationClearTypes,
+} from "../../actionsTypes/paginationTypes";
 import {
   FetchPaginationIncrementRequest,
   FetchPaginationIncrementSuccess,
@@ -8,11 +12,13 @@ import {
   FetchPaginationDecrementFailure,
   FetchPaginationFailurePayload,
   FetchPaginationSuccessPayload,
+  PaginationCLearActions,
 } from "../../types/types";
 
-export const incrementPaginationActions = (): FetchPaginationIncrementRequest => ({
-  type: paginationIncrementTypes.INCREMENT_PAGINATION_ACTION,
-});
+export const incrementPaginationActions =
+  (): FetchPaginationIncrementRequest => ({
+    type: paginationIncrementTypes.INCREMENT_PAGINATION_ACTION,
+  });
 
 export const incrementPaginationSuccess = (
   payload: FetchPaginationSuccessPayload
@@ -28,9 +34,10 @@ export const incrementPaginationFailure = (
   payload,
 });
 
-export const decrementPaginationActions = (): FetchPaginationDecrementRequest => ({
-  type: paginationDecrementTypes.DECREMENT_PAGINATION_ACTION,
-});
+export const decrementPaginationActions =
+  (): FetchPaginationDecrementRequest => ({
+    type: paginationDecrementTypes.DECREMENT_PAGINATION_ACTION,
+  });
 
 export const decrementPaginationSuccess = (
   payload: FetchPaginationSuccessPayload
@@ -44,4 +51,8 @@ export const decrementPaginationFailure = (
 ): FetchPaginationDecrementFailure => ({
   type: paginationDecrementTypes.DECREMENT_PAGINATION_FAILURE,
   payload,
+});
+
+export const clearPaginationActions = (): PaginationCLearActions => ({
+  type: paginationClearTypes.ClEAR_PAGINATION_ACTION,
 });

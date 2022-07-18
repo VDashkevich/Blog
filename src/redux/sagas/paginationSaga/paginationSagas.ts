@@ -14,6 +14,7 @@ import { IPost } from "../../../models/IPost";
 import { API_ROOT } from "../rootSaga";
 
 import { IPagination } from "../../../models/IPagination";
+
 import {
   fetchPostsFailure,
   fetchPostsSuccess,
@@ -35,16 +36,21 @@ function* incrementPaginationSaga() {
   try {
     let currentPage: number = yield select(getCurrentPage);
     let itemsPerPage: number = yield select(getItemsPerPage);
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const filter = urlParams.get("title_contains");
     const getPosts = () =>
       axios.get<IPost[]>(
         `${API_ROOT}/blogs?_limit=${itemsPerPage}&_start=${
           itemsPerPage * currentPage + 1
-        }`
+        }${filter ? queryString.replace("?", "&") : ""}`
       );
     const response: ResponseGenerator = yield call(getPosts);
     const nextPage = currentPage + 1;
 
-     yield put(
+    yield put(
       fetchPostsSuccess({
         posts: response.data,
       })
@@ -68,11 +74,16 @@ function* decrementPaginationSaga() {
   try {
     let currentPage: number = yield select(getCurrentPage);
     let itemsPerPage: number = yield select(getItemsPerPage);
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const filter = urlParams.get("title_contains");
+
     const getPosts = () =>
       axios.get<IPost[]>(
         `${API_ROOT}/blogs?_limit=${itemsPerPage}&_start=${
           itemsPerPage * currentPage - itemsPerPage
-        }`
+        }${filter ? queryString.replace("?", "&") : ""}`
       );
     const response: ResponseGenerator = yield call(getPosts);
     const prevPage = currentPage - 1;

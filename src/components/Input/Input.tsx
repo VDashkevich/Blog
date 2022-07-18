@@ -1,4 +1,6 @@
+import classnames from "classnames";
 import React, { FC, FocusEventHandler } from "react";
+import { Theme, UseThemeContext } from "../../context/ThemeModeContext";
 import "./Input.css";
 
 type InputProps = {
@@ -14,12 +16,18 @@ const Input: FC<InputProps> = ({
   className,
   placeholder,
 }: any) => {
+  const { theme } = UseThemeContext();
+  const isLightTheme = theme === Theme.Light;
+
   return (
     <input
       type={type}
       disabled={disabled}
-      className={className}
       placeholder={placeholder}
+      className={classnames({
+        ["InputLight"]: isLightTheme,
+        ["InputDark"]: !isLightTheme,
+      })}
     />
   );
 };

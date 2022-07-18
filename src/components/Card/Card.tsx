@@ -1,10 +1,8 @@
 import React, { FC } from "react";
-import "./Card.css";
 import classnames from "classnames";
-import {Route, Link, Routes, useParams} from 'react-router-dom';
-
+import { Route, Link, Routes, useParams } from "react-router-dom";
 import { Theme, UseThemeContext } from "./../../context/ThemeModeContext";
-
+import "./Card.css";
 type CardProps = {
   id: string;
   image: string;
@@ -19,11 +17,11 @@ const PostCard: FC<CardProps> = ({ id, image, text, date }) => {
   const isLightTheme = theme === Theme.Light;
 
   function newDateFormat(date: string) {
-    const b = new Date(date);
-    return b.toString();
+    const b = new Date(date).toString().slice(4, 15);
+    return b;
   }
   return (
-    <Link to={`/content/${id}`}>
+    <Link className="postContentMain" to={`/content/${id}`}>
       <div
         className={classnames({
           ["postContentLight"]: isLightTheme,

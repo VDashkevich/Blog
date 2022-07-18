@@ -10,6 +10,7 @@ import { RootState } from "../../redux/reducers/rootReducer";
 import "./Pagination.css";
 import classnames from "classnames";
 import { Theme, UseThemeContext } from "../../context/ThemeModeContext";
+import { Route, Link, Routes, useSearchParams } from "react-router-dom";
 
 type PaginationProps = {};
 
@@ -19,14 +20,16 @@ const Pagination: FC<PaginationProps> = ({}: any) => {
   const { theme } = UseThemeContext();
   const isLightTheme = theme === Theme.Light;
   const [totalPages, setTotalPages] = useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
   const {
     pagination: { pending, currentPage, error, itemsPerPage },
     posts: { posts },
   } = useSelector((state: RootState) => state);
+  const filter = searchParams.get("title_contains");
 
   const dispatch = useDispatch();
 
-  useEffect(() => getPages(), []);
+  useEffect(() => getPages(), [posts]);
 
   const setNextPage = () => {
     dispatch(incrementPaginationActions());
@@ -36,8 +39,7 @@ const Pagination: FC<PaginationProps> = ({}: any) => {
   };
 
   const getPages = () => {
-    const postLength = 50;
-
+    const postLength = filter && posts.length < 12 ? posts.length : 50;
     setTotalPages(Math.ceil(postLength / itemsPerPage));
   };
 
