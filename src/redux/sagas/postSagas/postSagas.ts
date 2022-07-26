@@ -71,7 +71,6 @@ function* fetchPostByIdSaga(action: any) {
 function* fetchPostSortSaga(action: any) {
   try {
     const newPost: any = [];
-    console.log("1", action);
 
     const response: ResponseGenerator = yield select(getPosts);
 

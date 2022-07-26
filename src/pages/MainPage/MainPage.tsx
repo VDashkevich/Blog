@@ -1,7 +1,10 @@
 import React, { FC, FocusEventHandler, useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPostsRequest } from "../../redux/actions/postsActions/postsActions";
+import {
+  fetchPostSort,
+  fetchPostsRequest,
+} from "../../redux/actions/postsActions/postsActions";
 import { RootState } from "../../redux/reducers/rootReducer";
 import BasicSelect from "../../components/BasicSelect";
 import "./MainPage.css";
@@ -37,7 +40,15 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-
+  const [CardClass, setCardClass] = React.useState("");
+  const Julia2 = (event: any) => {
+    setCardClass(event.target.value);
+    let sortArray = [];
+    sortArray = posts.sort((a: IPost, b: IPost) =>
+      a.publishedAt > b.publishedAt ? 1 : b.publishedAt > a.publishedAt ? -1 : 0
+    );
+    dispatch(fetchPostSort(sortArray));
+  };
   return (
     <>
       {pending ? (
@@ -67,33 +78,62 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
                 className={classnames({
                   ["MainSortButtonIconLight"]: isLightTheme,
                   ["MainSortButtonIconDark"]: !isLightTheme,
+                  ["active"]: CardClass === "SortDay",
                 })}
               >
-                Day
+                <Button
+                  btnContent="Day"
+                  value="SortDay"
+                  onClick={(event: any) => Julia2(event)}
+                  className="button_primary"
+                  active={CardClass === "SortDay"}
+                />
+              </div>
+
+              <div
+                className={classnames({
+                  ["MainSortButtonIconLight"]: isLightTheme,
+                  ["MainSortButtonIconDark"]: !isLightTheme,
+                  ["active"]: CardClass === "SortWeek",
+                })}
+              >
+                <Button
+                  btnContent="Week"
+                  value="SortWeek"
+                  onClick={(event: any) => Julia2(event)}
+                  className="button_primary"
+                  active={CardClass === "SortWeek"}
+                />
               </div>
               <div
                 className={classnames({
                   ["MainSortButtonIconLight"]: isLightTheme,
                   ["MainSortButtonIconDark"]: !isLightTheme,
+                  ["active"]: CardClass === "SortMonth",
                 })}
               >
-                Week
+                <Button
+                  btnContent="Month"
+                  value="SortMonth"
+                  onClick={(event: any) => Julia2(event)}
+                  className="button_primary"
+                  active={CardClass === "SortMonth"}
+                />
               </div>
               <div
                 className={classnames({
                   ["MainSortButtonIconLight"]: isLightTheme,
                   ["MainSortButtonIconDark"]: !isLightTheme,
+                  ["active"]: CardClass === "SortYear",
                 })}
               >
-                Month
-              </div>
-              <div
-                className={classnames({
-                  ["MainSortButtonIconLight"]: isLightTheme,
-                  ["MainSortButtonIconDark"]: !isLightTheme,
-                })}
-              >
-                Year
+                <Button
+                  btnContent="Year"
+                  value="SortYear"
+                  onClick={(event: any) => Julia2(event)}
+                  className="button_primary"
+                  active={CardClass === "SortYear"}
+                />
               </div>
             </div>
             <div className="MainSortTab">
