@@ -64,7 +64,7 @@ const SignIn: FC<SignInProps> = ({}: any) => {
         >
           <div>Password</div>
           <Input
-            type="text"
+            type="password"
             className="SignInPasswordInput"
             placeholder="Your password"
           ></Input>
