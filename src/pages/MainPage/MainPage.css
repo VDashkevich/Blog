@@ -4,7 +4,7 @@
   min-height: 100%;
   background: #e5e5e5;
   flex-direction: column;
-  transition: 0.5s;
+  transition: background 0.5s;
   margin-bottom: 150px;
   margin-top: 92px;
 }
@@ -13,7 +13,7 @@
   width: 1120px;
   min-height: 100%;
   background: #313037;
-  transition: 0.5s;
+  transition: background 0.5s;
   flex-direction: column;
   margin-bottom: 150px;
   margin-top: 92px;
@@ -335,7 +335,7 @@
   }
 
   .MainPosts {
-    width:272px;
+    width: 272px;
     height: 100%;
     gap: 30px;
     display: flex;

@@ -10,13 +10,15 @@ import Card from "../../components/Card";
 import { Theme, UseThemeContext } from "../../context/ThemeModeContext";
 import classnames from "classnames";
 import { IPost } from "../../models/IPost";
+import Lottie from "react-lottie";
+import animationData from "../../components/Lotties/LoadingAnimation.json";
+import { stringify } from "querystring";
 
 type ContentPageProps = {};
 
 const ContentPage: FC<ContentPageProps> = ({}: any) => {
   const { theme } = UseThemeContext();
   const isLightTheme = theme === Theme.Light;
-  // 👇️ get ID from url
   const params = useParams();
   const dispatch = useDispatch();
   const {
@@ -28,13 +30,30 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
       dispatch(fetchPostByIdRequest(Number(params.id)));
     }
   }, [params.id]);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   return (
     <>
       {pending ? (
-        <div>Loading...</div>
+        <div className="LottieClass">
+          <Lottie options={defaultOptions} height={300} width={300} />
+        </div>
       ) : error ? (
-        <div>Error</div>
+        <div
+          className={classnames({
+            ["ErrorClassLight"]: isLightTheme,
+            ["ErrorClassDark"]: !isLightTheme,
+          })}
+        >
+          Error
+        </div>
       ) : (
         <div
           className={classnames({
@@ -69,7 +88,11 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
           >
             {selectedPost?.title}
           </div>
-          <img className="ContentPageImage" src={selectedPost?.imageUrl} alt={selectedPost?.title} />
+          <img
+            className="ContentPageImage"
+            src={selectedPost?.imageUrl}
+            alt={selectedPost?.title}
+          />
           <div
             className={classnames({
               ["ContentPageTextLight"]: isLightTheme,
@@ -101,7 +124,7 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
                 ["ContentPageShareIconDark"]: !isLightTheme,
               })}
             >
-              <i className="fa-regular fa-circle"></i>
+              <i className="fa-solid fa-ellipsis"></i>
             </div>
           </div>
           <div className="ContentPagePosts">

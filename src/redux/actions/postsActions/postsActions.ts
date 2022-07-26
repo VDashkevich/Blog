@@ -8,6 +8,7 @@ import {
   FetchPostByIdRequest,
   FetchPostByIdSuccess,
   FetchPostByIdFailure,
+  FetchPostSort,
 } from "../../types/types";
 
 export const fetchPostsRequest = (param: any): FetchPostsRequest => ({
@@ -41,5 +42,10 @@ export const fetchPostByIdSuccess = (payload: any): FetchPostByIdSuccess => ({
 
 export const fetchPostByIdFailure = (payload: any): FetchPostByIdFailure => ({
   type: postTypes.FETCH_POST_BY_ID_FAILURE,
+  payload,
+});
+
+export const fetchPostSort = (payload: any): FetchPostSort => ({
+  type: postTypes.FETCH_POST_SORT,
   payload,
 });

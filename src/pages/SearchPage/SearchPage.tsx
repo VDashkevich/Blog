@@ -46,17 +46,26 @@ const SearchPage: FC<SearchPageProps> = ({}: any) => {
       </div>
 
       <div className="SearchPagePosts">
-        {posts.length
-          ? posts?.map((item: IPost, index: number) => (
-              <Card
-                key={item.id}
-                id={`${item.id}`}
-                image={`${item.imageUrl}`}
-                text={item.title}
-                date={`${item.publishedAt}`}
-              />
-            ))
-          : "No results"}
+        {posts.length ? (
+          posts?.map((item: IPost, index: number) => (
+            <Card
+              key={item.id}
+              id={`${item.id}`}
+              image={`${item.imageUrl}`}
+              text={item.title}
+              date={`${item.publishedAt}`}
+            />
+          ))
+        ) : (
+          <div
+            className={classnames({
+              ["NoResultsLight"]: isLightTheme,
+              ["NoResultsDark"]: !isLightTheme,
+            })}
+          >
+            No results
+          </div>
+        )}
       </div>
       <div className="SearchPagePagination">
         <Pagination />

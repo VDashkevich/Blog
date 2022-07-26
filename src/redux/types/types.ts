@@ -100,6 +100,11 @@ export type FetchPaginationDecrementFailure = {
   payload: FetchPaginationFailurePayload;
 };
 
+export type FetchPostSort = {
+  type: typeof postTypes.FETCH_POST_SORT;
+  payload: any;
+};
+
 export interface ClearPaginationAction {
   type: typeof paginationClearTypes.ClEAR_PAGINATION_ACTION;
 }
@@ -110,7 +115,8 @@ export type PostsActions =
   | FetchPostsFailure
   | FetchPostByIdRequest
   | FetchPostByIdSuccess
-  | FetchPostByIdFailure;
+  | FetchPostByIdFailure
+  | FetchPostSort;
 
 export type PaginationIncrementActions =
   | FetchPaginationIncrementRequest

@@ -179,3 +179,27 @@
     margin-top: 72px;
   }
 }
+
+.NoResultsLight {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  display: flex;
+  align-items: flex-start;
+  text-align: start;
+  color: #313037;
+}
+
+.NoResultsDark {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  display: flex;
+  align-items: flex-start;
+  text-align: start;
+  color: #ffffff;
+}

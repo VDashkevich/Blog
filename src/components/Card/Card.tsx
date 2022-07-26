@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import classnames from "classnames";
 import { Route, Link, Routes, useParams } from "react-router-dom";
 import { Theme, UseThemeContext } from "./../../context/ThemeModeContext";
+import format from "date-fns/format";
 import "./Card.css";
 type CardProps = {
   id: string;
@@ -17,7 +18,8 @@ const PostCard: FC<CardProps> = ({ id, image, text, date }) => {
   const isLightTheme = theme === Theme.Light;
 
   function newDateFormat(date: string) {
-    const b = new Date(date).toString().slice(4, 15);
+    // const b = new Date(date).toString().slice(4, 15);
+    const b = format(new Date(date), "PPP");
     return b;
   }
   return (

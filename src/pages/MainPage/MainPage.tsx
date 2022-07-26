@@ -13,6 +13,8 @@ import Pagination from "../../components/Pagination";
 import { Theme, UseThemeContext } from "../../context/ThemeModeContext";
 import classnames from "classnames";
 import { IPost } from "../../models/IPost";
+import Lottie from "react-lottie";
+import animationData from "../../components/Lotties/LoadingAnimation.json";
 
 type MainPageProps = {};
 
@@ -27,11 +29,21 @@ const MainPage: FC<MainPageProps> = ({}: any) => {
   useEffect(() => {
     dispatch(fetchPostsRequest(""));
   }, []);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
   return (
     <>
       {pending ? (
-        <div>Loading...</div>
+        <div className="LottieClass">
+          <Lottie options={defaultOptions} height={300} width={300} />
+        </div>
       ) : error ? (
         <div>Error</div>
       ) : (
