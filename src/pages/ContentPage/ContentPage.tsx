@@ -13,6 +13,22 @@ import { IPost } from "../../models/IPost";
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/LoadingAnimation.json";
 import { stringify } from "querystring";
+import {
+  FacebookShareButton,
+  FacebookMessengerShareButton,
+  FacebookMessengerIcon,
+  LinkedinShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  EmailShareButton,
+  InstapaperShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  EmailIcon,
+  InstapaperIcon,
+} from "react-share";
 
 type ContentPageProps = {};
 
@@ -38,7 +54,8 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-
+  const shareUrl = selectedPost?.url;
+  const title = selectedPost?.title;
   return (
     <>
       {pending ? (
@@ -108,7 +125,14 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
                 ["ContentPageShareIconDark"]: !isLightTheme,
               })}
             >
-              <i className="fa-brands fa-facebook-f"></i>
+              {/* <i className="fa-brands fa-facebook-f"></i> */}
+              <FacebookShareButton
+                url={shareUrl}
+                quote={title}
+                className="Demo__some-network__share-button"
+              >
+                <FacebookIcon size={40} round />
+              </FacebookShareButton>
             </div>
             <div
               className={classnames({
@@ -116,16 +140,38 @@ const ContentPage: FC<ContentPageProps> = ({}: any) => {
                 ["ContentPageShareIconDark"]: !isLightTheme,
               })}
             >
-              <i className="fa-brands fa-twitter"></i>
+              {/* <i className="fa-brands fa-twitter"></i> */}
+              <TwitterShareButton
+                url={shareUrl}
+                title={title}
+                className="Demo__some-network__share-button"
+              >
+                <TwitterIcon size={40} round />
+              </TwitterShareButton>
             </div>
             <div
+              className={classnames({
+                ["ContentPageShareIconLight"]: isLightTheme,
+                ["ContentPageShareIconDark"]: !isLightTheme,
+              })}
+            >
+              {/* <i className="fa-brands fa-twitter"></i> */}
+              <TelegramShareButton
+                url={shareUrl}
+                title={title}
+                className="Demo__some-network__share-button"
+              >
+                <TelegramIcon size={40} round />
+              </TelegramShareButton>
+            </div>
+            {/* <div
               className={classnames({
                 ["ContentPageShareIconLight"]: isLightTheme,
                 ["ContentPageShareIconDark"]: !isLightTheme,
               })}
             >
               <i className="fa-solid fa-ellipsis"></i>
-            </div>
+            </div> */}
           </div>
           <div className="ContentPagePosts">
             {posts?.slice(0, 3).map((item: IPost, index: number) => (

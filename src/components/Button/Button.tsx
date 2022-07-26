@@ -8,6 +8,8 @@ type ButtonProps = {
   className?: string;
   btnContent: any;
   disabled?: boolean;
+  value?: any;
+  active?: boolean;
 };
 
 const Button: FC<ButtonProps> = ({
@@ -15,12 +17,18 @@ const Button: FC<ButtonProps> = ({
   onClick,
   btnContent,
   disabled,
+  value,
+  active,
 }) => {
   const { theme } = UseThemeContext();
   const isLightTheme = theme === Theme.Light;
   return (
-    <button disabled={disabled} onClick={onClick}
-    className={className}>
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      value={value}
+      className={`${className} ${active ? "active" : ""}`}
+    >
       {btnContent}
     </button>
   );
