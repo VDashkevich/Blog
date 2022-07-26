@@ -6,13 +6,14 @@
   border-top: solid 1px rgba(49, 48, 55, 0.1);
   display: flex;
   justify-content: space-between;
-  align-items: center;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: rgba(49, 48, 55, 0.5);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .MainContainerFooterDark {
@@ -30,6 +31,8 @@
   font-size: 16px;
   line-height: 24px;
   color: rgba(255, 255, 255, 0.5);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .FooterCheckBox {

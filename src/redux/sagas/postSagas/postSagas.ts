@@ -7,6 +7,7 @@ import {
   fetchPostByIdFailure,
   fetchPostByIdSuccess,
   fetchPostByIdRequest,
+  fetchPostSort,
 } from "../../actions/postsActions/postsActions";
 import { postTypes } from "../../actionsTypes/postsTypes";
 import { API_ROOT } from "../rootSaga";
@@ -22,6 +23,7 @@ export interface ResponseGenerator {
 }
 
 const getItemsPerPage = (state: IPagination) => state.pagination.itemsPerPage;
+const getPosts = (state: any) => state.posts.posts;
 
 function* fetchPostsSaga(action: any = "") {
   try {
@@ -66,11 +68,33 @@ function* fetchPostByIdSaga(action: any) {
   }
 }
 
+function* fetchPostSortSaga(action: any) {
+  try {
+    const newPost: any = [];
+    console.log("1", action);
+
+    const response: ResponseGenerator = yield select(getPosts);
+
+    yield put(
+      fetchPostsSuccess({
+        posts: action.payload,
+      })
+    );
+  } catch (e: any) {
+    yield put(
+      fetchPostByIdFailure({
+        error: e.message,
+      })
+    );
+  }
+}
+
 function* postsSaga() {
   yield all([takeLatest(postTypes.FETCH_POST_REQUEST, fetchPostsSaga)]);
   yield all([
     takeLatest(postTypes.FETCH_POST_BY_ID_REQUEST, fetchPostByIdSaga),
   ]);
+  yield all([takeLatest(postTypes.FETCH_POST_SORT, fetchPostSortSaga)]);
 }
 
 export default postsSaga;

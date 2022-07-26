@@ -51,6 +51,11 @@ export default (state = initialState, action: PostsActions) => {
         selectedPost: null,
         error: action.payload.error,
       };
+    case postTypes.FETCH_POST_SORT:
+      return {
+        ...state,
+        posts: action.payload.posts,
+      };
     default:
       return {
         ...state,
